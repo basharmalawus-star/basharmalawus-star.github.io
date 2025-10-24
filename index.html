@@ -68,6 +68,14 @@
 .card a:not(.cta):hover,
 .navlinks a:hover { color: var(--accent-2); }
 
+/* Keep CTA text black without affecting card text */
+a.cta,
+a.cta:visited,
+a.cta:hover,
+a.cta:focus,
+a.cta:active {
+  color: #000000; /* only applies to .cta links */
+}
 
     /* ---------- Layout ---------- */
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;padding:64px 18px}
