@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Simple Website</title>
+  <meta name="description" content="A clean, fast, mobile‑friendly one‑page website." />
+  <meta name="keywords" content="portfolio, simple website, contact" />
+  <meta name="author" content="Your Name" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌐</text></svg>">
+  <style>
+    :root {
+      --bg: #0f172a;       /* slate-900 */
+      --card: #111827;     /* gray-900 */
+      --muted: #94a3b8;    /* slate-400 */
+      --text: #e5e7eb;     /* gray-200 */
+      --accent: #38bdf8;   /* sky-400 */
+      --accent-2: #22d3ee; /* cyan-400 */
+      --radius: 18px;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{color:var(--accent-2)}
+    header{position:sticky;top:0;backdrop-filter:saturate(160%) blur(6px);background:rgba(15,23,42,.6);border-bottom:1px solid rgba(148,163,184,.2);z-index:10}
+    .wrap{max-width:1000px;margin:0 auto;padding:18px 18px}
+    nav{display:flex;gap:16px;align-items:center;justify-content:space-between}
+    .brand{font-weight:700;letter-spacing:.4px}
+    .navlinks a{margin-left:14px;font-weight:600}
+
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;padding:64px 18px}
+    .card{background:var(--card);border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px}
+    h1{font-size:clamp(28px,4vw,44px);line-height:1.2;margin:0}
+    p.lead{font-size:clamp(16px,2.4vw,20px);color:var(--muted)}
+    .cta{display:inline-block;margin-top:18px;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#00202b;font-weight:800}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    section{padding:40px 18px}
+    h2{margin:0 0 10px 0;font-size:26px}
+    ul{padding-left:18px}
+    .footer{font-size:14px;color:var(--muted);text-align:center;padding:28px}
+
+    /* simple contact form without backend (FormSubmit fallback) */
+    form input, form textarea{width:100%;padding:12px 14px;margin:8px 0;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:#0b1222;color:var(--text)}
+    form button{padding:12px 16px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));font-weight:700}
+
+    @media (max-width:800px){.hero{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <div class="brand">MySite</div>
+        <div class="navlinks">
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="card">
+        <h1>Hi, I’m Your Name.</h1>
+        <p class="lead">This is a super simple, fast website that anyone can open on their phone or laptop. Customize the text below and publish it in minutes.</p>
+        <a class="cta" href="#contact">Contact me</a>
+      </div>
+      <div class="card" aria-label="quick facts">
+        <h2>Quick Facts</h2>
+        <ul>
+          <li>📍 Based in Your City</li>
+          <li>💼 What you do</li>
+          <li>✉️ you@example.com</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="grid">
+        <div class="card">
+          <h2>About</h2>
+          <p>Write 3–4 sentences about who you are and what visitors can find here. Keep it clear and friendly.</p>
+        </div>
+        <div class="card">
+          <h2>Services</h2>
+          <ul>
+            <li>Service A</li>
+            <li>Service B</li>
+            <li>Service C</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <h2>Recent Work</h2>
+      <div class="grid">
+        <div class="card"><strong>Project One</strong><p class="muted">One‑sentence summary of what you did.</p></div>
+        <div class="card"><strong>Project Two</strong><p class="muted">One‑sentence summary of what you did.</p></div>
+        <div class="card"><strong>Project Three</strong><p class="muted">One‑sentence summary of what you did.</p></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Use the form below (free via FormSubmit) or email me at <a href="mailto:you@example.com">you@example.com</a>.</p>
+        <form action="https://formsubmit.co/YOUREMAIL" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="New message from MySite" />
+          <label for="name">Name</label>
+          <input id="name" name="name" required placeholder="Your name" />
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@email.com" />
+          <label for="msg">Message</label>
+          <textarea id="msg" name="message" rows="5" required placeholder="How can I help?"></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Your Name • All rights reserved</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
