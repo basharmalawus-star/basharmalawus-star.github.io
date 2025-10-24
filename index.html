@@ -16,10 +16,10 @@
     :root{
       --bg:#ffffff;          /* page background */
       --card:#000000;        /* cards (dark) */
-      --text:#000000;        /* default text */
+      --text:#000000;        /* default page text */
       --muted:#6b7280;
-      --accent:#eab308;      /* gold */
-      --accent-2:#facc15;    /* brighter gold */
+      --accent:#eab308;      /* gold link */
+      --accent-2:#facc15;    /* brighter gold on hover */
       --radius:18px;
       --shadow:0 10px 25px rgba(0,0,0,.15);
     }
@@ -46,36 +46,24 @@
     .wrap{max-width:1000px;margin:0 auto;padding:18px 18px}
     nav{display:flex;gap:16px;align-items:center;justify-content:space-between}
     .brand{font-weight:700;letter-spacing:.4px}
+    .navlinks a{margin-left:14px;font-weight:600}
 
-    /* ---------- Buttons ---------- */
-.cta {
-  display: inline-block;
-  margin-top: 18px;
-  padding: 12px 18px;
-  border-radius: 12px;
-  background: #FFD700;        /* always gold */
-  color: #000000;             /* dark text */
-  font-weight: 700;
-  border: 2px solid #000000;  /* black rim */
-  transition: transform 0.25s ease;  /* smooth size change only */
-  transform: scale(1);
-}
-
-.cta:hover {
-  transform: scale(1.07);     /* expand slightly on hover */
-}
-/* Keep CTA text black in every state */
-.card a:not(.cta):hover,
-.navlinks a:hover { color: var(--accent-2); }
-
-/* Keep CTA text black without affecting card text */
-a.cta,
-a.cta:visited,
-a.cta:hover,
-a.cta:focus,
-a.cta:active {
-  color: #000000; /* only applies to .cta links */
-}
+    /* ---------- Buttons (CTA) ---------- */
+    .cta{
+      display:inline-block;
+      margin-top:18px;
+      padding:12px 18px;
+      border-radius:12px;
+      background:#FFD700;        /* always gold */
+      color:#000000;             /* black text */
+      font-weight:700;
+      border:2px solid #000000;  /* black rim */
+      transition:transform 0.25s ease; /* size change only */
+      transform:scale(1);
+    }
+    .cta:hover{ transform:scale(1.07); }
+    /* Ensure global link hover doesn't recolor CTA text */
+    a.cta, a.cta:visited, a.cta:hover, a.cta:focus, a.cta:active { color:#000000; }
 
     /* ---------- Layout ---------- */
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;padding:64px 18px}
@@ -91,17 +79,19 @@ a.cta:active {
       box-shadow:var(--shadow);
       padding:26px;
     }
-.card a:not(.cta) { color: var(--accent-2); }
+    .card a:not(.cta){ color:var(--accent-2); }
 
     /* ---------- Type ---------- */
     h1{font-size:clamp(28px,4vw,44px);line-height:1.2;margin:0}
     h2{margin:0 0 10px 0;font-size:26px}
-    p.lead{font-size:clamp(16px,2.4vw,20px);color:var(--muted)}
+    p.lead{font-size:clamp(16px,2.4vw,20px);color:var(--muted)} /* page-level lead */
+    /* Make paragraphs in cards white for readability */
+    .card p, .card .lead { color:#ffffff; }
     ul{padding-left:18px}
     .footer{font-size:14px;color:var(--muted);text-align:center;padding:28px}
 
     /* ---------- Images ---------- */
-    img{display:block;max-width:100%;height:auto}
+    img{display:block;max-width:100%;height:auto;border-radius:12px}
 
     /* ---------- Forms (readable on dark cards) ---------- */
     form input, form textarea{
@@ -118,16 +108,13 @@ a.cta:active {
       background:linear-gradient(135deg,var(--accent),var(--accent-2));
       font-weight:700;color:#00202b
     }
-.card p, .card .lead {
-  color: #ffffff; /* make all paragraph text inside dark cards white */
-}
 
     /* ---------- Mobile ---------- */
     @media (max-width:800px){ .hero{grid-template-columns:1fr} }
-    /* Simple single-page routing */
-.route { display: none; }
-.route.active { display: block; }
 
+    /* ---------- Single-page routing ---------- */
+    .route{ display:none; }
+    .route.active{ display:block; }
   </style>
 </head>
 <body>
@@ -136,111 +123,157 @@ a.cta:active {
       <nav>
         <div class="brand">Madina Jewelry</div>
         <div class="navlinks">
-          <a href="#about">About</a>
-          <a href="#work">Work</a>
-          <a href="#contact" data-route-link="home">Contact</a>
-          <a href="#contact">Contact</a>
+          <!-- Route switches -->
+          <a href="#home">Home</a>
+          <a href="#gallery">Gallery</a>
+          <!-- Scroll-inside-Home helpers -->
+          <a href="#home" data-scroll="#about">About</a>
+          <a href="#home" data-scroll="#work">Work</a>
+          <a href="#home" data-scroll="#contact">Contact</a>
         </div>
       </nav>
     </div>
   </header>
 
-<main class="wrap">
-  <!-- HOME "page" -->
-  <div id="home" class="route active">
-    <section class="hero">
-      <!-- (keep your existing hero cards exactly as-is) -->
-      <!-- ... -->
-    </section>
-
-    <section id="about">
-      <!-- ... -->
-    </section>
-
-    <section id="work">
-      <!-- ... -->
-    </section>
-
-    <!-- keep your existing Featured Designs section here too if you want -->
-    <section id="showcase">
-      <!-- ... -->
-    </section>
-
-    <section id="contact">
-      <!-- ... -->
-    </section>
-  </div>
-
-  <!-- GALLERY "page" (same site, hidden until selected) -->
-  <div id="gallery" class="route">
-    <section>
-      <h2>Gallery</h2>
-      <div class="grid">
+  <main class="wrap">
+    <!-- HOME "page" -->
+    <div id="home" class="route active">
+      <section class="hero">
         <div class="card">
-          <img src="Wedding-Ring.png" alt="Silver diamond wedding ring" width="100%" loading="lazy">
-          <p class="muted">Wedding Ring</p>
+          <h1>Hi, I’m Madina.</h1>
+          <p class="lead">Welcome to Madina Jewelry – handcrafted, elegant designs inspired by beauty and simplicity. Each piece is created with care and meaning.</p>
+          <a class="cta" href="#home" data-scroll="#contact">Contact me</a>
         </div>
-        <div class="card">
-          <img src="Multiple-Jewelry.png" alt="Jewelry collection set" width="100%" loading="lazy">
-          <p class="muted">Jewelry Set</p>
+        <div class="card" aria-label="quick facts">
+          <h2>Quick Facts</h2>
+          <ul>
+            <li>📍 Based in West Sacramento</li>
+            <li>💼 Buying &amp; Selling Jewelry</li>
+            <li>✉️ madina@gmail.com</li>
+          </ul>
         </div>
-        <!-- Add more items as you like -->
-      </div>
-    </section>
-  </div>
-</main>
+      </section>
 
+      <section id="about">
+        <div class="grid">
+          <div class="card">
+            <h2>About</h2>
+            <p>Hi, I’m Madina! I buy, sell, and design jewelry right here in West Sacramento. Whether you’re looking for a unique handmade piece, want to repair something special, or are interested in selling your own jewelry, you’ll find everything you need here. I take pride in offering quality craftsmanship and personal service for every piece.</p>
+          </div>
+          <div class="card">
+            <h2>Services</h2>
+            <ul>
+              <li>Buy &amp; Sell</li>
+              <li>Repair &amp; Restore</li>
+              <li>Jewelry Crafting</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="work">
+        <h2>Recent Work</h2>
+        <div class="grid">
+          <div class="card"><strong>Project One</strong><p class="muted">I buy, sell, design, and repair jewelry in West Sacramento.</p></div>
+          <div class="card"><strong>Project Two</strong><p class="muted">I design and handcraft custom wedding rings that reflect each couple’s story.</p></div>
+          <div class="card"><strong>Project Three</strong><p class="muted">I create pieces with natural and lab-grown diamonds for every style and budget.</p></div>
+        </div>
+      </section>
+
+      <!-- Two-Image Section -->
+      <section id="showcase">
+        <h2>Featured Designs</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="Wedding-Ring.png" alt="Silver diamond wedding ring" width="100%" loading="lazy">
+            <p class="muted">Elegant handcrafted diamond ring with delicate detailing.</p>
+          </div>
+          <div class="card">
+            <img src="Multiple-Jewelry.png" alt="Jewelry collection set" width="100%" loading="lazy">
+            <p class="muted">Modern jewelry set reflecting timeless style.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="card">
+          <p>Use the form below (free via FormSubmit) or email me at <a href="mailto:madina@gmail.com">madina@gmail.com</a>.</p>
+          <form action="https://formsubmit.co/madina@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New message from Madina Jewelry" />
+            <label for="name">Name</label>
+            <input id="name" name="name" required placeholder="Your name" />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@email.com" />
+            <label for="msg">Message</label>
+            <textarea id="msg" name="message" rows="5" required placeholder="How can I help?"></textarea>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- GALLERY "page" (same site, switched via hash) -->
+    <div id="gallery" class="route">
+      <section>
+        <h2>Gallery</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="Wedding-Ring.png" alt="Silver diamond wedding ring" width="100%" loading="lazy">
+            <p class="muted">Wedding Ring</p>
+          </div>
+          <div class="card">
+            <img src="Multiple-Jewelry.png" alt="Jewelry collection set" width="100%" loading="lazy">
+            <p class="muted">Jewelry Set</p>
+          </div>
+          <!-- Add more items as you like -->
+        </div>
+      </section>
+    </div>
+  </main>
 
   <footer class="footer">© <span id="year"></span> Madina Jewelry • All rights reserved</footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 
-<script>
-  // show the requested "page" by id (home / gallery)
-  function showRoute(route) {
-    const routes = document.querySelectorAll('.route');
-    routes.forEach(el => el.classList.remove('active'));
-    const target = document.getElementById(route) || document.getElementById('home');
-    target.classList.add('active');
-
-    // If link also had a section anchor on home (like #contact), scroll to it
-    if (route === 'home' && location.hash && location.hash !== '#home' && location.hash !== '#gallery') {
-      const section = document.querySelector(location.hash);
-      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
+    // ----- Simple single-page "router" -----
+    function showRoute(route) {
+      document.querySelectorAll('.route').forEach(el => el.classList.remove('active'));
+      (document.getElementById(route) || document.getElementById('home')).classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }
 
-  // Handle clicks: if href looks like #route or has data-route-link, prevent full navigation
-  document.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href^="#"], a[data-route-link]');
-    if (!a) return;
-    e.preventDefault();
+    // Handle clicks (switch routes or scroll-inside-home)
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
 
-    const href = a.getAttribute('href') || '';
-    const hash = href.startsWith('#') ? href.slice(1) : null;
-    const forcedRoute = a.dataset.routeLink || hash;
+      const href = a.getAttribute('href') || '';
+      const isHash = href.startsWith('#');
+      const forcedRoute = isHash ? href.slice(1) : a.dataset.routeLink;
+      const scrollSel = a.dataset.scroll;
 
-    // Update hash for bookmarking/back button
-    if (forcedRoute) {
-      history.pushState({}, '', '#' + forcedRoute);
-      showRoute(forcedRoute);
-    }
-  });
+      if (forcedRoute) {
+        e.preventDefault();
+        history.pushState({}, '', '#' + forcedRoute);
+        showRoute(forcedRoute);
+        if (scrollSel && forcedRoute === 'home') {
+          const el = document.querySelector(scrollSel);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
 
-  // On load / back-forward buttons
-  window.addEventListener('hashchange', () => {
-    const route = location.hash.replace('#','') || 'home';
-    showRoute(route);
-  });
+    // Back/forward support
+    window.addEventListener('hashchange', () => {
+      const route = location.hash.replace('#', '') || 'home';
+      showRoute(route);
+    });
 
-  // Initial load
-  showRoute((location.hash || '#home').replace('#',''));
-</script>
-
-  
+    // Initial load
+    showRoute((location.hash || '#home').replace('#', ''));
+  </script>
 </body>
 </html>
