@@ -10,17 +10,28 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌐</text></svg>">
   <style>
     :root {
-      --bg: #0f172a;       /* slate-900 */
-      --card: #111827;     /* gray-900 */
-      --muted: #94a3b8;    /* slate-400 */
-      --text: #e5e7eb;     /* gray-200 */
-      --accent: #38bdf8;   /* sky-400 */
-      --accent-2: #22d3ee; /* cyan-400 */
-      --radius: 18px;
-      --shadow: 0 10px 25px rgba(0,0,0,.35);
+      :root {
+  --bg: #ffffff;        /* page background = white */
+  --card: #111827;      /* cards = dark gray/black */
+  --text: #000000;      /* normal text = black */
+  --muted: #6b7280;     /* muted text = medium gray */
+  --accent: #eab308;    /* gold highlight */
+  --accent-2: #facc15;  /* bright gold hover */
+  --radius: 18px;
+  --shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6}
+    .card {
+  color: #ffffff;   /* make card text white */
+}
+
+.card a {
+  color: var(--accent-2);  /* optional: links gold on black cards */
+}
+
     a{color:var(--accent);text-decoration:none}
     a:hover{color:var(--accent-2)}
     header{position:sticky;top:0;backdrop-filter:saturate(160%) blur(6px);background:rgba(15,23,42,.6);border-bottom:1px solid rgba(148,163,184,.2);z-index:10}
