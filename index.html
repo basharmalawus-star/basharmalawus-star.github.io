@@ -48,12 +48,22 @@
     .brand{font-weight:700;letter-spacing:.4px}
 
     /* ---------- Buttons ---------- */
-    .cta{
-      display:inline-block;margin-top:18px;
-      padding:12px 18px;border-radius:12px;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      color:#00202b;font-weight:800
-    }
+.cta{
+  display:inline-block;
+  margin-top:18px;
+  padding:12px 18px;
+  border-radius:12px;
+  background:#ffffff;         /* white button */
+  color:#000000;              /* black text */
+  font-weight:700;
+  border:2px solid #facc15;   /* optional gold border to match theme */
+  transition:0.2s ease;
+}
+.cta:hover{
+  background:#facc15;         /* gold on hover */
+  color:#111827;              /* dark text on hover */
+}
+
 
     /* ---------- Layout ---------- */
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;padding:64px 18px}
@@ -96,6 +106,9 @@
       background:linear-gradient(135deg,var(--accent),var(--accent-2));
       font-weight:700;color:#00202b
     }
+.card p, .card .lead {
+  color: #ffffff; /* make all paragraph text inside dark cards white */
+}
 
     /* ---------- Mobile ---------- */
     @media (max-width:800px){ .hero{grid-template-columns:1fr} }
