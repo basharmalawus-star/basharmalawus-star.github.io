@@ -65,13 +65,9 @@
   transform: scale(1.07);     /* expand slightly on hover */
 }
 /* Keep CTA text black in every state */
-.cta,
-.cta:visited,
-.cta:hover,
-.cta:focus,
-.cta:active {
-  color: #000000 !important;
-}
+.card a:not(.cta):hover,
+.navlinks a:hover { color: var(--accent-2); }
+
 
     /* ---------- Layout ---------- */
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;padding:64px 18px}
