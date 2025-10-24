@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery – Madina Jewelry</title>
+  <meta name="description" content="Gallery of handcrafted jewelry by Madina." />
+  <style>
+    /* reuse your theme (short version) */
+    :root{--bg:#fff;--card:#000;--text:#000;--muted:#6b7280;--radius:18px;--shadow:0 10px 25px rgba(0,0,0,.15)}
+    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6}
+    a{color:#eab308;text-decoration:none} a:hover{color:#facc15}
+    header{position:sticky;top:0;background:#0f172a99;border-bottom:1px solid #94a3b833;backdrop-filter:saturate(160%) blur(6px)}
+    .wrap{max-width:1000px;margin:0 auto;padding:18px}
+    nav{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .brand{font-weight:700}
+    section{padding:40px 18px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .card{background:var(--card);color:#fff;border:1px solid #94a3b826;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+    img{display:block;max-width:100%;height:auto;border-radius:12px}
+    .footer{font-size:14px;color:var(--muted);text-align:center;padding:28px}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Madina Jewelry</div>
+      <div>
+        <a href="/index.html">Home</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <h1>Gallery</h1>
+    <p class="muted">A selection of recent pieces.</p>
+    <div class="grid">
+      <div class="card"><img src="Wedding-Ring.png" alt="Wedding Ring"><p>Wedding Ring</p></div>
+      <div class="card"><img src="Multiple-Jewelry.png" alt="Jewelry Set"><p>Jewelry Set</p></div>
+      <!-- Add more images as you upload them -->
+    </div>
+  </section>
+</main>
+
+<footer class="footer">© <span id="year"></span> Madina Jewelry</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
