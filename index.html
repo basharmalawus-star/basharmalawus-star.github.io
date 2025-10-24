@@ -13,20 +13,16 @@
 
   <style>
 
-/* Logo banner */
+/* Top logo banner (uses background image so it crops nicely) */
+/* Top logo banner */
 #logo-banner {
   width: 100%;
-  text-align: center;
+  height: 230px; /* adjust height */
   margin: 30px 0 40px;
-}
-.logo-banner {
-  width: 100%;
-  max-width: 1000px;    /* keep it from getting too big */
-  height: auto;
-  border-radius: 12px;  /* optional */
+  border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  background: url('Madina-Jewelery.png') center/cover no-repeat;
 }
-
 
     
     /* ---------- Theme (white page, dark cards) ---------- */
@@ -156,11 +152,9 @@
     <!-- HOME "page" -->
     <div id="home" class="route active">
 
-<!-- Logo Banner -->
-<!-- Logo Banner -->
-<section id="logo-banner">
-  <img src="logo-banner.png" alt="Madina Jewelry Logo" class="logo-banner">
-</section>
+    <!-- Logo Banner -->
+    <section id="logo-banner" aria-label="Madina Jewelry Logo"></section>
+
 
 
       <section class="hero">
