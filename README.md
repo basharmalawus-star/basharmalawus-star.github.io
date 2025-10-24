@@ -1,2 +1,2 @@
-# wali.github.io
+# basharmalawus-star.github.io
 Jewlery Website
