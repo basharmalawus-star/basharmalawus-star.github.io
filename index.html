@@ -40,18 +40,15 @@
     .navlinks a{margin-left:14px;font-weight:600}
 
     /* ---------- Full-bleed top banner (ONLY on Home) ---------- */
-    #logo-banner{
-      width:100%;
-      height:260px;                    /* adjust height if you want */
-      margin:0 0 40px;
-      background-color:#f8f1df;        /* pleasant fallback color */
-      background-image:url('./Madina-Jewelery.png'); /* exact filename from your repo */
-      background-position:center;
-      background-size:cover;
-      background-repeat:no-repeat;
-    }
-    @media (min-width: 900px){ #logo-banner{ height:300px; } }
-    @media (max-width: 520px){ #logo-banner{ height:170px; } }
+#logo-banner {
+  margin: 0 0 40px;
+}
+#logo-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 
     /* ---------- CTA Button ---------- */
     .cta{
@@ -117,8 +114,11 @@
     </div>
   </header>
 
-  <!-- Full-width banner sits outside the .wrap so it can stretch edge-to-edge -->
-  <section id="logo-banner" aria-label="Madina Jewelry Logo"></section>
+<!-- Full-width banner sits outside the .wrap so it can stretch edge-to-edge -->
+<section id="logo-banner" aria-label="Madina Jewelry Logo">
+  <img src="Madina-Jewelery.png" alt="Madina Jewelry Logo">
+</section>
+
 
   <main class="wrap">
     <!-- HOME "page" -->
